@@ -33,25 +33,7 @@ This R Markdown walks through a **step-by-step workflow** to build and interpret
    - check the implied (conditional) independencies
    - connect it to a **real-world example**
 
-3. Recreate two **more complex** examples (inspired by class whiteboard sketches), then connect them to a **real applied example**.
-
-### Reference images (optional)
-
-These are the images that motivated the examples. They are included here *only for visual reference*.
-
-```{r, echo=FALSE, fig.cap="Reference slide: three motifs + conditioning ideas"}
-knitr::include_graphics("assets_causal_graphs/slide_graphs_independence.png")
-```
-
-```{r, echo=FALSE, fig.cap="Reference (blackboard) example 1"}
-knitr::include_graphics("assets_causal_graphs/blackboard_example1.png")
-```
-
-```{r, echo=FALSE, fig.cap="Reference (blackboard) example 2"}
-knitr::include_graphics("assets_causal_graphs/blackboard_example2.png")
-```
-
----
+3. Recreate two **more complex** examples, then connect them to a **real applied example**.
 
 # Part 1 — Three canonical motifs
 
