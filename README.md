@@ -6,7 +6,9 @@ We first review the counterfactual theory of causation and the potential outcome
 During this lab, we start by calculating different estimatiors on a generated datasete. Then, we explore the Lalonde dataset from 1986 and add some extentions developed by [Imbens & Wu, (2025)](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.20251440). The complete replication package from the paper is available [here](https://www.openicpsr.org/openicpsr/project/232201/version/V1/view?path=/openicpsr/232201/fcr:versions/V1/replication) and an additional tutorial developed be the authors can be found [here](https://yiqingxu.org/tutorials/lalonde/).
 
 ## Lab 2 (Mechanisms, Counterfactuals, Graphs)
-We then introduce the use of directed acyclic graphs to formalize the assumptions necessary for learning about causal relationships. 
+We then introduce the use of directed acyclic graphs (DAGs) to formalize the assumptions necessary for learning about causal relationships. 
+
+In this lab session, we analyse the 3 canonical motifs behind causal inference: mediators, confounders and colliders. We then visualize how these motifs look like through DAGs, and thing of real life examples in which each of them appear. Two main R packages have been developed to build DAGs:  [`daggity`](https://www.dagitty.net/) and [`ggdag`](https://r-causal.github.io/ggdag/). The syntax of these packages can be combined with other packages, such as `tydiverse` and `ggplot2`.
 
 ## Lab 3 (Randomness, Natural and Otherwise)
 Exploiting random variation is not the only way to infer causal effects, but it’s a useful one. In this session we consider the advantages and disadvantages of randomized controlled experiments as a research design ideal, what happens when they go wrong, and how to exploit naturally occurring forms of randomness. 
