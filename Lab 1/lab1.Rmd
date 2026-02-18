@@ -108,6 +108,7 @@ df$y_random <- ifelse(df$t_random == 1, df$y1, df$y0)
 # Verify treatment is now independent of baseline potential outcomes
 cor(df$t_random, df$y0)
 cor(df$t_random, df$y1)
+# Correlations closer to zero but not exactly zero due to random sampling variability, sampling a finite number of units can lead to some random correlation.
 
 # Difference in means under random assignment
 diff_in_means <- mean(df$y_random[df$t_random == 1]) - mean(df$y_random[df$t_random == 0])
@@ -203,8 +204,8 @@ source("https://github.com/xuyiqing/lalonde/blob/main/tutorial/functions.R?raw=T
 covar <- c("age", "education", "black", "hispanic", "married",
            "nodegree", "re74", "re75", "u74", "u75")
 
-# Estimate the difference in means (experimental benchmark)
-diff(ldw, "re78", "treat")
+# Estimate the difference in means (experimental benchmark without adjustment)
+diff(ldw, "re78", "treat") 
 
 # Estimate the ATE using regression adjustment
 reg(ldw, "re78", "treat", covar) # Experimental dataset
