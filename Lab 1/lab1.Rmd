@@ -16,7 +16,7 @@ knitr::opts_chunk$set(fig.width=4, fig.height=3)
 # install.packages(c('tidyverse', 'here'))
 library(tidyverse)
 library(here)
-df <- readr::read_tsv("Lab 1/full_potential_outcomes.tsv")
+df <- readr::read_tsv("full_potential_outcomes.tsv")
 ```
 
 The data contains the following columns:
@@ -58,6 +58,16 @@ cor(df$t, df$y1)
 df %>% ggplot(aes(x = factor(t), y = y0)) +
   geom_boxplot() +
   labs(x = "Treatment", y = "Baseline Potential Outcome (Y0)")
+```
+
+```{r}
+# Under the ORIGINAL (biased) treatment assignment
+mean(df$y0[df$t == 1])   # baseline outcome of people who chose treatment
+mean(df$y0[df$t == 0])   # baseline outcome of people who didn't
+
+# Under RANDOM treatment assignment
+mean(df$y0[df$t_random == 1])
+mean(df$y0[df$t_random == 0])
 ```
 
 - What is the ATE vs the ATC and ATT? How would we calculate these from the science?
@@ -184,7 +194,7 @@ coef(lm(y_confound ~ t_confound + x, data=df))["t_confound"]
   
 ```{r}
 # Load the Lalonde dataset
-load("Lab 1/lalonde.RData")
+load("lalonde.RData")
 
 # Import functions from GitHub
 source("https://github.com/xuyiqing/lalonde/blob/main/tutorial/functions.R?raw=TRUE")
@@ -214,4 +224,40 @@ ldw_psid_ps <- assess_overlap(data = ldw_psid, treat = "treat", cov = covar)
 
 # Overlap gains with non-experimental datasets and modern adjustment methods (e.g., matching, weighting) that can be explored in future labs.
 # Check sections 2.3  and 2.4 from tutorial for more details on this topic.
+```
+
+```{r}
+install_all <- function(packages) {
+  installed_pkgs <- installed.packages()[, "Package"]
+  for (pkg in packages) {
+    if (!pkg %in% installed_pkgs) {
+      install.packages(pkg)
+    }
+  }
+}
+
+# packages to be installed
+packages <- c("estimatr", "grf", "ggplot2", "Matching", "hbal", "ebal",
+              "CBPS", "DoubleML", "mlr3learners", "mlr3", "fixest",
+              "qte", "sensemakr")
+install_all(packages)
+
+# Load the packages
+library(grf)
+library(Matching)
+library(estimatr)
+library(hbal)
+library(ebal)
+library(CBPS)
+library(DoubleML)
+library(mlr3learners)
+library(mlr3)
+library(fixest)
+library(ggplot2)
+library(qte)
+library(sensemakr)
+```
+
+```{r}
+
 ```
